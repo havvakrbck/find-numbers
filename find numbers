@@ -1,0 +1,60 @@
+class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Sayı Tahmin Oyunu \n\n");
+ 
+            int tutulan, tahmin,hak=5;
+            Random rnd = new Random();//Rastgele sayı nesnesi
+            tutulan = rnd.Next(1, 50);//1-50 arasında rastgele sayı üretme
+ 
+            //tekrar oynamak istermisiniz diye sorduralım.
+ 
+            while(true)
+            {
+                while (true) //sonsuz döngü. tahmin gerçekleşene kadar devam edecek
+                {
+                    if (hak <= 0)
+                    {
+                        Console.WriteLine("Hakkınız Bitti");
+                        break;
+                    }
+                    Console.Write("Bir Sayı Girin:");
+                    tahmin = Convert.ToInt32(Console.ReadLine());
+ 
+                    if (tahmin == tutulan)
+                    {
+                        Console.WriteLine("Tebrikler Bildiniz.");
+                        break;// tahmin doğru olunca döngüden çıkıyoruz.
+ 
+                    }
+                    else if (tahmin > tutulan)
+                    {
+                        Console.WriteLine("Daha küçük bir sayı girin");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Daha büyük bir sayı girin");
+                    }
+                    hak--;
+                }
+ 
+                Console.WriteLine("Tekrar Oynamak için E-e tuşuna basın");
+                string c = Console.ReadLine();
+                if(c=="e" || c == "E")
+                {
+                    Console.Clear();
+                    hak = 5;
+                    tutulan = rnd.Next(1, 50);//1-50 arasında rastgele sayı üretme
+                }
+                else
+                {
+                    Console.WriteLine("Oyundan Çıktınız");
+                    break;
+                }
+ 
+            }
+ 
+            Console.ReadLine();
+        }
+    }
